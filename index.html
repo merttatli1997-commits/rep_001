@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>sadeceart — Illustration Portfolio</title>
+<meta name="description" content="Original hand-drawn illustrations on paper by sadeceart, inspired by music, literature, popular culture and everyday life.">
+<meta property="og:title" content="sadeceart — Illustration Portfolio"><meta property="og:description" content="Original hand-drawn illustrations on paper, inspired by music, literature, popular culture and everyday life."><meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff;--fg:#111;--mut:#6b6b6b;--line:#e7e7e7;--paper:#f3f1ec}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0d0d;--fg:#f1f1f1;--mut:#8a8a8a;--line:#242424;--paper:#1a1a19}}
+:root[data-theme="dark"]{--bg:#0d0d0d;--fg:#f1f1f1;--mut:#8a8a8a;--line:#242424;--paper:#1a1a19}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.splash{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:var(--bg);transition:opacity .7s;cursor:pointer}
+.splash.out{opacity:0;pointer-events:none}
+#logo{display:flex;flex-direction:column;align-items:center;gap:22px;animation:in 1.4s cubic-bezier(.2,.8,.2,1) both}
+#logo img{width:min(46vw,260px);height:auto;animation:spin 1.6s cubic-bezier(.2,.8,.2,1) both}
+#logo span{font-weight:800;font-size:clamp(28px,7vw,52px);letter-spacing:-.04em}
+.splash small{position:absolute;bottom:8vh;color:var(--mut);letter-spacing:.2em;font-size:12px;text-transform:uppercase}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes spin{from{transform:rotate(-120deg) scale(.7)}to{transform:none}}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px}
+nav .brand{display:flex;align-items:center;gap:10px;margin:0}nav .brand img{width:30px;height:30px}nav b{font-weight:800;letter-spacing:-.03em;font-size:18px}
+nav a{color:var(--fg);text-decoration:none;font-size:14px;margin-left:18px}
+nav a:hover{color:var(--mut)}
+.hero{min-height:calc(100svh - 62px);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding-top:40px;padding-bottom:90px}
+.hero h1{font-size:clamp(38px,8vw,92px);line-height:1;letter-spacing:-.045em;margin:0 0 24px;font-weight:800}
+.hero p{max-width:820px;font-size:clamp(24px,4.6vw,46px);line-height:1.25;letter-spacing:-.025em;font-weight:600;margin:0 0 36px}
+.btn{display:inline-block;background:var(--fg);color:var(--bg);padding:13px 24px;border-radius:999px;text-decoration:none;font-weight:600;font-size:14px;border:0;cursor:pointer;font-family:inherit}
+section{padding:70px 0;border-top:1px solid var(--line)}
+h2{font-size:13px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);margin:0 0 36px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:40px 28px}
+.item{margin:0;cursor:pointer}
+.mat{aspect-ratio:4/5;background:var(--paper);display:grid;place-items:center;padding:9%;transition:transform .3s}
+.mat img{max-width:100%;max-height:100%;display:block;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.item:hover .mat{transform:translateY(-4px)}
+figcaption{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding-top:12px;font-size:14px}
+figcaption .n{color:var(--mut);grid-row:span 2;font-variant-numeric:tabular-nums}
+figcaption small{color:var(--mut)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.two p{margin:0 0 16px;font-size:18px;max-width:520px}
+details{border-bottom:1px solid var(--line);padding:18px 0}
+summary{cursor:pointer;font-weight:600;list-style:none}
+summary::after{content:"+";float:right;color:var(--mut)}
+details[open] summary::after{content:"–"}
+details p{color:var(--mut);margin:12px 0 0;max-width:640px}
+form{display:grid;gap:12px;max-width:520px}
+input,textarea{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--fg);font:inherit}
+.contact a{color:var(--fg)}
+footer{padding:36px 0;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+.lb{position:fixed;inset:0;z-index:20;background:var(--bg);display:none;grid-template-rows:auto 1fr auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.lb.open{display:grid}
+.stage{overflow:auto;display:grid;place-items:center;background:var(--paper);padding:20px}
+.stage img{max-width:100%;max-height:52vh;cursor:crosshair;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.stage.zoom{display:block}
+.stage.zoom img{max-width:none;max-height:none;width:190%;cursor:zoom-out;display:block;margin:0 auto}
+.info{padding:18px 24px;max-height:38vh;overflow:auto;border-top:1px solid var(--line)}
+.info h3{margin:0 0 6px;letter-spacing:.04em}.info small{color:var(--mut);display:block}.info p{margin:14px 0 0;max-width:760px;line-height:1.7}
+.bar{display:flex;gap:8px;margin-top:12px}
+.bar button{background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;font:inherit;font-size:13px}
+@media (max-width:700px){.two{grid-template-columns:1fr}nav a{margin-left:12px;font-size:13px}.wrap{padding:0 18px}}
+section{display:none}
+body[data-v="portfolio"] #portfolio,body[data-v="about"] #about,body[data-v="faq"] #faq,body[data-v="contact"] #contact{display:block;border-top:0;min-height:calc(100svh - 62px)}
+body:not([data-v="home"]) #top,body[data-v="home"] footer{display:none}
+nav a.on{font-weight:600;text-decoration:underline;text-underline-offset:6px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line)}.top button{background:transparent;color:var(--fg);border:1px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer;font:inherit;font-size:14px;margin-left:6px}.top span{color:var(--mut);font-size:13px}.info p+p{border-top:1px solid var(--line);padding-top:14px}
+#lang{margin-left:16px;background:transparent;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:4px 11px;font:inherit;font-size:12px;cursor:pointer}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.foot a{color:var(--mut)}.fl{display:flex;gap:18px;flex-wrap:wrap}
+.shop{display:inline-block;margin-top:14px;border:1px solid var(--fg);border-radius:999px;padding:8px 16px;color:var(--fg);text-decoration:none;font-size:14px}
+[hidden]{display:none!important}
+@media (max-width:700px){nav b{display:none}}
+.igbar{position:fixed;left:0;right:0;bottom:0;z-index:4;display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--fg);color:var(--bg);text-decoration:none;padding:16px 24px calc(16px + env(safe-area-inset-bottom,0px));font-size:14px}.igbar b{font-weight:600}
+body:not([data-v="home"]) .igbar{display:none}
+.about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:48px;align-items:center}
+.about p{margin:0 0 16px;font-size:18px}.pf{width:100%;max-width:300px;aspect-ratio:1;object-fit:cover;display:block;border-radius:50%;justify-self:center}
+.studio{margin:56px 0 0}.studio img{width:100%;display:block}.studio figcaption{color:var(--mut);font-size:13px;margin-top:10px}
+@media (max-width:700px){.about{grid-template-columns:1fr;gap:28px}}
+.stage{position:relative}.hint{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:12px;color:var(--mut);pointer-events:none}
+.mag{position:fixed;z-index:30;width:min(48vw,380px);aspect-ratio:1;border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 32px rgba(0,0,0,.4);background-color:var(--paper);background-repeat:no-repeat;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="splash" id="splash">
+  <div id="logo"><img src="logo.png" alt="sadeceart logo"><span>sadeceart</span></div>
+  <small data-t="splash">Illustration · Original drawings</small>
+</div>
+<nav><div class="wrap"><a class="brand" href="#home"><img src="logo.png" alt=""><b>sadeceart</b></a><div><a href="#portfolio" data-t="nPortfolio">Portfolio</a><a href="#about" data-t="nAbout">About</a><a href="#faq" data-t="nFaq">FAQ</a><a href="#contact" data-t="nContact">Contact</a><button id="lang" aria-label="Language">TR</button></div></div></nav>
+<header class="wrap hero" id="top">
+  <p data-t="hero">Original hand-drawn illustrations inspired by music, literature, popular culture and everyday life, brought together here.</p>
+  <a class="btn" href="#portfolio" data-t="seeBtn">See my illustrations</a>
+</header>
+<section id="portfolio"><div class="wrap"><h2 data-t="hPortfolio">Portfolio</h2><div class="grid" id="grid"></div></div></section>
+<section id="about"><div class="wrap"><h2 data-t="hAbout">About</h2><div class="about"><img class="pf" src="portrait.jpg" alt="Portrait of the artist"><div>
+  <p data-t="about1">I'm an illustrator based in İzmir, working on paper with acrylic markers and fineliners. Every piece is drawn by hand, and the images here are photographs of the originals.</p>
+  <p data-t="about2">My illustrations draw on music, literature, popular culture and everyday life, often with a streak of dark humor.</p>
+</div></div>
+<figure class="studio"><img src="studio.jpg" alt="The artist's workspace" loading="lazy"><figcaption data-t="studioCap">Crime scene</figcaption></figure></div></section>
+<section id="faq"><div class="wrap"><h2 data-t="hFaq">Frequently asked questions</h2>
+  <details><summary data-t="q1">Are the original drawings for sale?</summary><p data-t="a1">Some of them are. If you're interested in an original, write to me through the contact form and I'll let you know which pieces are available and the price.</p></details>
+  <details><summary data-t="q2">Do you ship the original drawings?</summary><p data-t="a2">Currently I ship original drawings within Turkey only.</p></details>
+  <details><summary data-t="q3">Where can I get prints?</summary><p data-t="a3">Selected works are available as digital prints in my Etsy shop, Art Store. They are instant downloads that you can print yourself, for personal use only. No physical item is shipped.</p></details>
+  <details><summary data-t="q4">Do you take commissions?</summary><p data-t="a4">In limited numbers, yes. Send a short message describing your idea and I'll let you know whether I can take it on.</p></details>
+  <details><summary data-t="q5">Can I share your drawings?</summary><p data-t="a5">You can share them with credit. For commercial use, please write to me first.</p></details>
+  <details><summary data-t="q6">How can I reach you?</summary><p data-t="a6">Use the contact form, or send a message on Instagram @sadeceart_.</p></details>
+</div></section>
+<section id="contact" class="contact"><div class="wrap"><h2 data-t="hContact">Contact</h2>
+  <form id="f"><input id="n" data-tp="pName" placeholder="Your name" required><input id="e" type="email" data-tp="pEmail" placeholder="Email" required><textarea id="m" rows="5" data-tp="pMsg" placeholder="Your message" required></textarea><button class="btn" data-t="send">Send</button></form>
+  <p style="margin-top:24px;color:var(--mut)"><span data-t="ig">Or on Instagram:</span> <a href="https://instagram.com/sadeceart_" target="_blank" rel="noopener">@sadeceart_</a></p>
+</div></section>
+<footer><div class="wrap foot"><span data-t="copy">© 2026 sadeceart. All drawings belong to the artist.</span><span class="fl"><a href="https://sadeceartstore.etsy.com" target="_blank" rel="noopener">Art Store on Etsy</a><a href="https://instagram.com/sadeceart_" target="_blank" rel="noopener">Instagram @sadeceart_</a></span></div></footer>
+
+<a class="igbar" href="https://instagram.com/sadeceart_" target="_blank" rel="noopener"><span data-t="igBanner">Follow my work on Instagram</span><b>@sadeceart_ →</b></a>
+<div class="lb" id="lb"><div class="top"><button id="cl" data-t="back">← Back</button><span id="ct"></span><div><button id="lang2">TR</button><button id="pv">←</button><button id="nx">→</button></div></div><div class="stage" id="stage"><img id="big" alt=""><div class="hint" data-t="hint"></div></div><div class="mag" id="mag" hidden></div><div class="info"><h3 id="lt"></h3><small id="ls"></small><p id="le"></p><p id="ld" lang="tr"></p><a id="shop" class="shop" target="_blank" rel="noopener" hidden></a></div></div>
+
+<script>
+const W=[{"t": "BEYOĞLU BLUES", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Beyoğlu Blues, Jack White’ın görsel dünyasını İstanbul sokaklarıyla buluşturan ve 2026 çıkışlı Frozen Charlotte albümünden yola çıkan bir çalışma. Albüm kapağındaki Frozen Charlatan’a atıf yapan ana karakterimi, Jack White’ın eski ikonik gitarıyla Beyoğlu’ndaki Cezayir Sokak merdivenlerine taşıdım. Blues ve White’ın solo döneminin estetiğini yansıtan mavi tonların hakim olduğu kompozisyonda, figür hem Frozen Charlatan hem de Jack White olarak okunabilir. Frozen Charlotte albümünün 13 parçalık şarkı listesi ise kompozisyonun içine gizlenerek J.W. III imzasıyla tamamlanıyor.", "src": "work-1.jpg", "e": "Beyoğlu Blues brings Jack White’s visual world together with the streets of Istanbul, drawing on his 2026 album Frozen Charlotte. I took my main character, an homage to the Frozen Charlatan on the album cover, to the steps of Cezayir Street in Beyoğlu, along with Jack White’s old iconic guitar. In a composition dominated by shades of blue that reflect the blues and the aesthetic of White’s solo era, the figure can be read as both the Frozen Charlatan and Jack White. The 13-track list of Frozen Charlotte is hidden within the composition and completed with the signature J.W. III."}, {"t": "VICIOUS CIRCLE", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Kısır Döngü, Bikini Bottom’ın yıllardır bize gösterildiği kadar neşeli bir yer olmadığı; tıpkı gerçek dünya gibi monotonlukla ve mutsuz insanlarla dolu olduğu fikrinden doğan distopik bir çalışma. Eser, Eleanor Rigby ve İstasyon İnsanları şarkılarındaki modern toplum ve yalnızlık anlatılarından ilham alıyor. Arka plandaki fabrika dumanları ve işe giden Ruhi, modern hayatın tekdüzeliğini temsil ederken; kompozisyonun farklı noktalarına bu dünyanın da giderek “dibe vurduğunu” ima eden kelime oyunları ve görsel detaylar yerleştirdim.", "src": "work-2.jpg", "e": "Vicious Circle is a dystopian piece born from the idea that Bikini Bottom isn’t as cheerful as it has long been shown to us, but, just like the real world, is full of monotony and unhappy people. It draws inspiration from the stories of modern society and loneliness in the songs Eleanor Rigby and İstasyon İnsanları. The factory smoke in the background and Ruhi heading to work stand for the monotony of modern life, while wordplay and visual details placed around the composition hint that this world too is gradually hitting rock bottom.", "tt": "KISIR DÖNGÜ"}, {"t": "THE BEHEMOTH THAT LULLS THE NIGHT TO SLEEP", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Geceyi Uyutan Behemoth, Bulgakov’un Usta ile Margarita eserindeki şeytani kedi Behemoth’u alternatif bir Türkiye gerçekliğinde yeniden hayal ettiğim bir çalışma. İnsanları manipüle ederek kaos yaratan ve yalnızca onların içinde zaten var olanı açığa çıkardığını savunan Behemoth, bu kez kendi şeytani doğasını bile tersine çevirecek kadar bunaltıcı bir gerçeklikle karşı karşıya. Eser, kötülük ve kaosla özdeşleşmiş bir karakterin bile içinde bulunduğu dünyanın ağırlığı karşısında tükenebileceği fikrini kara mizahla ele alıyor.", "src": "work-3.jpg", "e": "The Behemoth That Lulls the Night to Sleep reimagines Behemoth, the demonic cat of Bulgakov’s The Master and Margarita, in an alternative Turkish reality. Behemoth, who manipulates people into creating chaos and insists he only reveals what already exists within them, now faces a reality so overwhelming it turns even his own demonic nature upside down. With dark humor, the work explores the idea that even a character identified with evil and chaos can be worn out by the weight of the world he lives in.", "shop": "https://sadeceartstore.etsy.com/listing/4583071772", "tt": "GECEYİ UYUTAN BEHEMOTH"}, {"t": "OUT OF SYNC", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Out of Sync, Yin-Yang düşüncesini zaman ve mekan kavramlarıyla bir araya getiren bir çalışma. Loki’deki zaman atlamalarından yola çıkarak, zamanın ve mekanın hayatımızı tanımlayan mutlak gerçeklikler olarak değil de aslında basit birer değişken olarak da düşünülebileceği ve bu nedenle bazen onlara yüklediğimiz anlamı gözümüzde fazla büyütmememiz gerektiği fikrine odaklanıyor. Ana karakter, Loki’deki Ms. Minutes’tan ilham alıp “rubber hose” tarzındayken; “Not the Same Anymore”, The Strokes’un sevdiğim parçalarından biri olup zamanla tüm yaşanmışlıkların geride kaldığını fark etmenin insanda yarattığı değişimi temsil ediyor. Bu farkındalık, geçmişin ağırlığını azaltırken insanı hayata karşı daha hissiz ve artık eskisiyle tamamen aynı olamayacağı bir noktaya taşıyor.", "src": "work-4.jpg", "e": "Out of Sync brings the Yin-Yang idea together with the concepts of time and space. Drawing on the time jumps in Loki, it focuses on the idea that time and space may not be absolute realities that define our lives but simply variables, so we shouldn’t inflate the meaning we give them. The main character, inspired by Ms. Minutes from Loki, is drawn in the “rubber hose” style. “Not the Same Anymore,” one of my favorite songs by The Strokes, represents the change that comes from realizing that everything we’ve lived has been left behind with time. This realization lightens the weight of the past while carrying a person to a point where they feel more numb toward life and can never be entirely the same as before."}, {"t": "SIHHİYE-NOİR", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Sıhhiye-Noir, film noir estetiğini Ankara’nın kendine özgü gri atmosferiyle bir araya getirdiğim bir çalışma. Ankara’nın Sıhhiye semtinde bir kış günü Ted ve Spider-Man Noir, bir gizemi aydınlatmak için aynı dünyada buluşuyor. Eseri çizdiğim dönemde Ted dizisine duyduğum hayranlık, karakteri kendi kurduğum bu dünyaya dahil etmemde etkili oldu. Eser, Ankara’yı ve sevdiğim popüler kültür karakterlerini klasik noir anlatılarının karanlık ve gizemli atmosferi içinde hayal ediyor.", "src": "work-5.jpg", "e": "Sıhhiye-Noir blends the film noir aesthetic with Ankara’s distinctive gray atmosphere. On a winter day in Ankara’s Sıhhiye district, Ted and Spider-Man Noir meet in the same world to solve a mystery. My admiration for the Ted series while I was drawing this piece influenced my decision to bring the character into the world I built. The work imagines Ankara and my favorite pop culture characters within the dark, mysterious atmosphere of classic noir stories."}, {"t": "OLD THOR WITH DADDY ISSUES", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "e": "Old Thor With Daddy Issues is a humorous work in which I approach the divine characters of Norse mythology through an ordinary, human father-son relationship. I imagined an aged Thor as a son who, after all this time, can still argue with his father Odin over small matters. By placing the grand, serious atmosphere of the mythological world alongside an everyday family conflict, I built a narrative based on this contrast that makes even the gods thoroughly human.", "d": "Old Thor With Daddy Issues, İskandinav mitolojisinin tanrısal karakterlerini sıradan ve insani bir baba-oğul ilişkisi üzerinden ele aldığım mizahi bir çalışma. Yaşlanmış Thor’u, aradan geçen onca zamana rağmen babası Odin’le hala küçük meseleler üzerinden tartışabilen bir oğul olarak hayal ettim. Mitolojik dünyanın görkemli ve ciddi atmosferini gündelik bir aile çatışmasıyla yan yana getirerek, tanrıları bile son derece insani hale getiren bu tezat üzerine kurulu bir anlatı oluşturdum.", "src": "work-6.jpg", "shop": "https://sadeceartstore.etsy.com/listing/4582731915"}];
+const $=s=>document.querySelector(s);
+const T={"en": {"splash": "Illustration · Original drawings", "nPortfolio": "Portfolio", "nAbout": "About", "nFaq": "FAQ", "nContact": "Contact", "hero": "Original hand-drawn illustrations inspired by music, literature, popular culture and everyday life, brought together here.", "seeBtn": "See my illustrations", "hPortfolio": "Portfolio", "hAbout": "About", "hFaq": "Frequently asked questions", "hContact": "Contact", "about1": "I'm an illustrator based in İzmir, working on paper with acrylic markers and fineliners. Every piece is drawn by hand, and the images here are photographs of the originals.", "about2": "My illustrations draw on music, literature, popular culture and everyday life, often with a streak of dark humor.", "q1": "Are the original drawings for sale?", "a1": "For available works, write to me through the contact form and I'll share the current pieces and prices.", "q2": "Do you take commissions?", "a2": "Depending on the subject and my schedule, yes. A short message describing your idea is enough.", "q3": "Are prints or posters available?", "a3": "You can reach out about prints of selected works.", "q4": "Can I share the drawings?", "a4": "You can share them with credit. For commercial use, please write to me first.", "send": "Send", "ig": "Or on Instagram:", "copy": "© 2026 sadeceart. All drawings belong to the artist.", "back": "← Back", "medium": "Acrylic markers and fineliners on paper", "size": "Approx. 25 × 35 cm", "shop": "Digital print on Etsy →", "pName": "Your name", "pEmail": "Email", "pMsg": "Your message", "subj": "sadeceart — message"}, "tr": {"splash": "İllüstrasyon · Orijinal çizimler", "nPortfolio": "Portföy", "nAbout": "Hakkımda", "nFaq": "SSS", "nContact": "İletişim", "hero": "Müzik, edebiyat, popüler kültür ve gündelik hayattan beslenen el çizimi özgün çalışmalarımı burada bir araya getiriyorum.", "seeBtn": "Çizimlerimi gör", "hPortfolio": "Portföy", "hAbout": "Hakkımda", "hFaq": "Sık sorulan sorular", "hContact": "İletişim", "about1": "İzmir'de yaşayan bir illüstratörüm. Kağıt üzerine akrilik marker ve fineliner ile çiziyorum. Buradaki işlerin hepsi elle çizildi, görseller de orijinallerinin fotoğrafları.", "about2": "Müzikten, edebiyattan, popüler kültürden ve gündelik hayattan besleniyorum; işlerime çoğu zaman kara mizah da karışıyor.", "q1": "Orijinal çizimler satılık mı?", "a1": "Satışta olan işler için iletişim formundan yaz, mevcut çalışmaları ve fiyatları paylaşırım.", "q2": "Özel çizim (komisyon) alıyor musun?", "a2": "Konuya ve takvime göre alıyorum. Fikrini kısaca anlatan bir mesaj yeterli.", "q3": "Baskı veya poster var mı?", "a3": "Seçili işlerin baskıları için bana ulaşabilirsin.", "q4": "Çizimleri paylaşabilir miyim?", "a4": "Kaynak göstererek paylaşabilirsin. Ticari kullanım için önce yazman gerekir.", "send": "Gönder", "ig": "Ya da Instagram:", "copy": "© 2026 sadeceart. Tüm çizimler sanatçıya aittir.", "back": "← Geri", "medium": "Kağıt üzerine akrilik marker ve fineliner", "size": "Yaklaşık 25 × 35 cm", "shop": "Etsy'de dijital baskı →", "pName": "Adın", "pEmail": "E-posta", "pMsg": "Mesajın", "subj": "sadeceart — mesaj"}};
+let L="en";const tl=w=>L==="tr"&&w.tt?w.tt:w.t;
+function renderGrid(){$("#grid").innerHTML=W.map((w,i)=>`<figure class="item" data-i="${i}"><div class="mat"><img src="${w.src}" alt="${tl(w)}" loading="lazy"></div><figcaption><span class="n">0${i+1}</span><b>${tl(w)}</b><small>${w.y} · ${T[L].size}</small></figcaption></figure>`).join("")}
+function setLang(l){L=l;document.documentElement.lang=l;document.querySelectorAll("[data-t]").forEach(e=>e.textContent=T[l][e.dataset.t]);document.querySelectorAll("[data-tp]").forEach(e=>e.placeholder=T[l][e.dataset.tp]);$("#lang").textContent=$("#lang2").textContent=l==="en"?"TR":"EN";renderGrid();if($("#lb").classList.contains("open"))show(cur)}
+$("#lang").onclick=$("#lang2").onclick=()=>setLang(L==="en"?"tr":"en");
+let cur=0;
+function show(i){magOff();const lb=$("#lb");if(!lb.classList.contains("open")){try{history.pushState({lb:1},"");pushed=true}catch(e){}}cur=(i+W.length)%W.length;const w=W[cur],t=T[L],a=L==="en"?[w.e,"en",w.d,"tr"]:[w.d,"tr",w.e,"en"];$("#big").src=w.src;$("#big").alt=tl(w);$("#stage").classList.remove("zoom");$("#stage").scrollTo(0,0);$("#ct").textContent=`${cur+1} / ${W.length}`;$("#lt").textContent=tl(w);$("#ls").textContent=`${w.y} · ${t.medium} · ${t.size}`;$("#le").textContent=a[0];$("#le").lang=a[1];$("#ld").hidden=true;const s=$("#shop");if(w.shop){s.href=w.shop;s.textContent=t.shop;s.hidden=false}else s.hidden=true;lb.classList.add("open")}
+$("#grid").onclick=e=>{const f=e.target.closest(".item");if(f)show(+f.dataset.i)};
+const mag=$("#mag"),big=$("#big"),Z=3;
+function magOff(){mag.hidden=true}
+function magOn(){mag.style.backgroundImage='url("'+W[cur].src+'")';mag.hidden=false}
+function magMove(e){if(mag.hidden)magOn();const r=big.getBoundingClientRect(),sr=$("#stage").getBoundingClientRect(),m=mag.offsetWidth;
+const x=Math.max(0,Math.min(r.width,e.clientX-r.left)),y=Math.max(0,Math.min(r.height,e.clientY-r.top));
+mag.style.backgroundSize=`${r.width*Z}px ${r.height*Z}px`;mag.style.backgroundPosition=`${m/2-x*Z}px ${m/2-y*Z}px`;
+let L;if(x>r.width/2){L=r.left-16-m;if(L<8)L=sr.left+12}else{L=r.right+16;if(L+m>innerWidth-8)L=sr.right-12-m}
+mag.style.left=L+"px";mag.style.top=Math.max(sr.top+8,r.top)+"px"}
+big.addEventListener("pointerenter",magOn);big.addEventListener("pointermove",magMove);
+big.addEventListener("pointerdown",e=>{magOn();magMove(e)});
+["pointerleave","pointerup","pointercancel"].forEach(t=>big.addEventListener(t,magOff));
+$("#pv").onclick=()=>show(cur-1);$("#nx").onclick=()=>show(cur+1);
+let pushed=false;const hideLb=()=>{magOff();$("#lb").classList.remove("open");pushed=false};const close=()=>{if(pushed){try{history.back();return}catch(e){}}hideLb()};$("#cl").onclick=close;addEventListener("popstate",()=>{if($("#lb").classList.contains("open"))hideLb()});
+addEventListener("keydown",e=>{if(!$("#lb").classList.contains("open"))return;if(e.key==="Escape")close();if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
+$("#f").onsubmit=e=>{e.preventDefault();const b=`${$("#m").value}\n\n${$("#n").value} (${$("#e").value})`;location.href="mailto:sadecesanatvar@gmail.com?subject="+encodeURIComponent(T[L].subj)+"&body="+encodeURIComponent(b)};
+const sp=$("#splash");let seen=false;
+try{seen=sessionStorage.getItem("sa")==="1"}catch(e){}
+function hide(){sp.classList.add("out");try{sessionStorage.setItem("sa","1")}catch(e){}}
+if(seen)sp.style.display="none";else{sp.onclick=hide;setTimeout(hide,2600)}
+const V=["portfolio","about","faq","contact"];
+function route(){const k=location.hash.slice(1);const v=V.includes(k)?k:"home";document.body.dataset.v=v;document.querySelectorAll("nav a[href^='#']").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+v));scrollTo(0,0)}
+addEventListener("hashchange",route);route();
+T.en.igBanner="Follow my work on Instagram";T.tr.igBanner="Çalışmalarımı Instagram'da takip et";
+T.en.studioCap="Crime scene";T.tr.studioCap="Suç mahalli";
+Object.assign(T.en,{"q1": "Are the original drawings for sale?", "a1": "Some of them are. If you're interested in an original, write to me through the contact form and I'll let you know which pieces are available and the price.", "q2": "Do you ship the original drawings?", "a2": "Currently I ship original drawings within Turkey only.", "q3": "Where can I get prints?", "a3": "Selected works are available as digital prints in my Etsy shop, Art Store. They are instant downloads that you can print yourself, for personal use only. No physical item is shipped.", "q4": "Do you take commissions?", "a4": "In limited numbers, yes. Send a short message describing your idea and I'll let you know whether I can take it on.", "q5": "Can I share your drawings?", "a5": "You can share them with credit. For commercial use, please write to me first.", "q6": "How can I reach you?", "a6": "Use the contact form, or send a message on Instagram @sadeceart_."});Object.assign(T.tr,{"q1": "Orijinal çizimler satılık mı?", "a1": "Bazıları satılık. Bir orijinal ilgini çektiyse iletişim formundan yaz, hangi çizimlerin müsait olduğunu ve fiyatını paylaşayım.", "q2": "Orijinal çizimleri gönderiyor musun?", "a2": "Şu an orijinal çizimleri sadece Türkiye içine gönderiyorum.", "q3": "Baskıları nereden alabilirim?", "a3": "Seçili çalışmalar Etsy mağazamda (Art Store) dijital baskı olarak satılıyor. Anında indirilen dosyalardır, kendin bastırabilirsin, yalnızca kişisel kullanım içindir. Fiziksel ürün gönderilmez.", "q4": "Özel çizim (komisyon) alıyor musun?", "a4": "Sınırlı sayıda alıyorum. Fikrini kısaca anlatan bir mesaj gönder, yapıp yapamayacağımı yazayım.", "q5": "Çizimleri paylaşabilir miyim?", "a5": "Kaynak göstererek paylaşabilirsin. Ticari kullanım için önce yazman gerekir.", "q6": "Nasıl ulaşabilirim?", "a6": "İletişim formunu kullanabilir ya da Instagram'dan @sadeceart_ hesabına yazabilirsin."});
+T.en.hint="Hover or drag over the drawing to magnify";T.tr.hint="Çizimin üzerinde gezdir, büyütülmüş halini gör";
+setLang("en");
+</script>
+</body>
+</html>
