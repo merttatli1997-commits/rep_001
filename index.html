@@ -89,6 +89,39 @@ body:not([data-v="home"]) .igbar{display:none}
 @media (max-width:700px){.about{grid-template-columns:1fr;gap:28px}}
 .stage{position:relative}.hint{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-size:12px;color:var(--mut);pointer-events:none}
 .mag{position:fixed;z-index:30;width:min(48vw,380px);aspect-ratio:1;border:1px solid var(--line);border-radius:6px;box-shadow:0 12px 32px rgba(0,0,0,.4);background-color:var(--paper);background-repeat:no-repeat;pointer-events:none}
+/* ---- sadeceart FM ---- */
+.fmb{margin-left:8px;display:inline-flex;align-items:center;gap:7px;background:transparent;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:4px 11px;font:inherit;font-size:12px;font-weight:600;letter-spacing:.08em;cursor:pointer;vertical-align:middle}
+.fmb i{width:7px;height:7px;border-radius:50%;background:var(--mut);display:block}
+body.fm-on .fmb i{background:var(--fg);animation:fmp 1.3s infinite}
+@keyframes fmp{50%{opacity:.25}}
+.fmp{position:fixed;z-index:6;top:calc(68px + env(safe-area-inset-top,0px));right:max(12px,calc((100vw - 1180px)/2 + 24px));width:min(340px,calc(100vw - 24px));background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 18px 50px -20px rgba(0,0,0,.4)}
+.fm-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.fm-brand{font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.fm-live{font-size:11px;color:var(--mut);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:7px}
+.fm-live i{width:7px;height:7px;border-radius:50%;background:var(--mut);display:block}
+.fmp.fm-playing .fm-live{color:var(--fg)}.fmp.fm-playing .fm-live i{background:var(--fg);animation:fmp 1.3s infinite}
+.fm-cover{position:relative;width:100%;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--paper);border:1px solid var(--line)}
+.fm-cover img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .5s}
+.fm-cover img.on{opacity:1}.fm-cover img.zoom{transform:scale(1.34)}
+.fm-cover .fm-ph{position:absolute;inset:0;display:grid;place-items:center;font-size:12px;letter-spacing:.25em;color:var(--mut);text-transform:uppercase}
+.fm-cover img.on+.fm-ph{display:none}
+.fm-meta{margin:16px 0 12px;min-height:62px}
+.fm-song{font-size:17px;font-weight:600;line-height:1.25;margin:0 0 3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.fm-artist{font-size:14px;margin:0}.fm-album{font-size:12.5px;color:var(--mut);margin:3px 0 0}
+.fm-bar{height:4px;border-radius:4px;background:var(--line);cursor:pointer;position:relative}
+.fm-bar b{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--fg);border-radius:4px}
+.fm-times{display:flex;justify-content:space-between;font-size:11px;color:var(--mut);margin-top:7px;font-variant-numeric:tabular-nums}
+.fm-ctrl{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:12px}
+.fm-ctrl button{border:0;background:none;color:var(--fg);cursor:pointer;padding:8px;border-radius:50%;display:grid;place-items:center;transition:transform .15s,opacity .15s}
+.fm-ctrl button:hover{transform:scale(1.08)}.fm-ctrl button:disabled{opacity:.35;cursor:default;transform:none}
+.fm-ctrl svg{width:24px;height:24px;fill:currentColor}
+.fm-ctrl .fm-play{width:58px;height:58px;background:var(--fg);color:var(--bg)}
+.fm-ctrl .fm-play svg{width:26px;height:26px}
+.fm-ic-pause{display:none}.fmp.fm-playing .fm-ic-play{display:none}.fmp.fm-playing .fm-ic-pause{display:block}
+.fm-note{text-align:center;font-size:11px;color:var(--mut);margin:12px 0 0;min-height:14px}
+@media (max-width:700px){.fmb{margin-left:6px;padding:4px 9px}}
+.fmlink{margin-top:22px;color:var(--fg);font-size:15px;font-weight:600;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px;transition:color .2s,border-color .2s}
+.fmlink:hover{color:var(--mut);border-color:var(--mut)}
 </style>
 </head>
 <body>
@@ -96,11 +129,12 @@ body:not([data-v="home"]) .igbar{display:none}
   <div id="logo"><img src="logo.png" alt="sadeceart logo"><span>sadeceart</span></div>
   <small data-t="splash">Illustration · Original drawings</small>
 </div>
-<nav><div class="wrap"><a class="brand" href="#home"><img src="logo.png" alt=""><b>sadeceart</b></a><div><a href="#portfolio" data-t="nPortfolio">Portfolio</a><a href="#about" data-t="nAbout">About</a><a href="#faq" data-t="nFaq">FAQ</a><a href="#contact" data-t="nContact">Contact</a><button id="lang" aria-label="Language">TR</button></div></div></nav>
+<nav><div class="wrap"><a class="brand" href="#home"><img src="logo.png" alt=""><b>sadeceart</b></a><div><a href="#portfolio" data-t="nPortfolio">Portfolio</a><a href="#about" data-t="nAbout">About</a><a href="#faq" data-t="nFaq">FAQ</a><a href="#contact" data-t="nContact">Contact</a><button id="lang" aria-label="Language">TR</button><button id="fmBtn" class="fmb" aria-haspopup="true" aria-expanded="false" aria-controls="fmPanel"><i></i>FM</button></div></div></nav>
 <header class="wrap hero" id="top">
   <h1 class="sr">sadeceart — Illustration Portfolio</h1>
   <p data-t="hero">Original hand-drawn illustrations inspired by music, literature, popular culture and everyday life, gathered here.</p>
   <a class="btn" href="#portfolio" data-t="seeBtn">See my illustrations</a>
+  <a class="fmlink" id="fmHero" href="#" data-t="fmHero">for sadeceart.fm →</a>
 </header>
 <section id="portfolio"><div class="wrap"><h2 data-t="hPortfolio">Portfolio</h2><div class="grid" id="grid"></div></div></section>
 <section id="about"><div class="wrap"><h2 data-t="hAbout">About</h2><div class="about"><img class="pf" src="portrait.jpg" alt="Portrait of the artist"><div>
@@ -125,6 +159,21 @@ body:not([data-v="home"]) .igbar{display:none}
 
 <a class="igbar" href="https://instagram.com/sadeceart_" target="_blank" rel="noopener"><span data-t="igBanner">Follow my work on Instagram</span><b>@sadeceart_ →</b></a>
 <div class="lb" id="lb"><div class="top"><button id="cl" data-t="back">← Back</button><span id="ct"></span><div><button id="lang2">TR</button><button id="pv">←</button><button id="nx">→</button></div></div><div class="stage" id="stage"><img id="big" alt=""><div class="hint" data-t="hint"></div></div><div class="mag" id="mag" hidden></div><div class="info"><h3 id="lt"></h3><small id="ls"></small><p id="le"></p><p id="ld" lang="tr"></p><a id="shop" class="shop" target="_blank" rel="noopener" hidden></a></div></div>
+
+<div class="fmp" id="fmPanel" role="region" aria-label="sadeceart FM" hidden>
+  <div class="fm-top"><span class="fm-brand">sadeceart FM</span><span class="fm-live"><i></i><span id="fmLive">Off air</span></span></div>
+  <div class="fm-cover"><img id="fmCover" alt=""><div class="fm-ph">sadeceart</div></div>
+  <div class="fm-meta"><p class="fm-song" id="fmSong"></p><p class="fm-artist" id="fmArtist">&nbsp;</p><p class="fm-album" id="fmAlbum"></p></div>
+  <div class="fm-bar" id="fmBar"><b id="fmProg"></b></div>
+  <div class="fm-times"><span id="fmCur">0:00</span><span id="fmDur">0:00</span></div>
+  <div class="fm-ctrl">
+    <button id="fmPrev" aria-label="Previous" disabled><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zM9.5 12 18 18V6z"/></svg></button>
+    <button id="fmPlay" class="fm-play" aria-label="Play / Pause" disabled><svg class="fm-ic-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="fm-ic-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg></button>
+    <button id="fmNext" aria-label="Next" disabled><svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM6 18l8.5-6L6 6z"/></svg></button>
+  </div>
+  <p class="fm-note" id="fmNote"></p>
+</div>
+<div id="fmYt" style="position:fixed;left:-9999px;top:0;width:1px;height:1px"></div>
 
 <script>
 const W=[{"t": "BEYOĞLU BLUES", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Beyoğlu Blues, Jack White’ın görsel dünyasını İstanbul sokaklarıyla buluşturan ve 2026 çıkışlı Frozen Charlotte albümünden yola çıkan bir çalışma. Albüm kapağındaki Frozen Charlatan’a atıf yapan ana karakterimi, Jack White’ın eski ikonik gitarıyla Beyoğlu’ndaki Cezayir Sokak merdivenlerine taşıdım. Blues ve White’ın solo döneminin estetiğini yansıtan mavi tonların hâkim olduğu kompozisyonda, figür hem Frozen Charlatan hem de Jack White olarak okunabilir. Frozen Charlotte albümünün 13 parçalık şarkı listesi ise kompozisyonun içine gizlenerek J.W. III imzasıyla tamamlanıyor.", "src": "work-1.jpg", "e": "Beyoğlu Blues brings Jack White’s visual world together with the streets of Istanbul, drawing on his 2026 album Frozen Charlotte. I took my main character, an homage to the Frozen Charlatan on the album cover, to the steps of Cezayir Street in Beyoğlu, along with Jack White’s old iconic guitar. In a composition dominated by shades of blue that reflect the blues and the aesthetic of White’s solo era, the figure can be read as both the Frozen Charlatan and Jack White. The 13-track list of Frozen Charlotte is hidden within the composition and completed with the signature J.W. III."}, {"t": "VICIOUS CIRCLE", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Kısır Döngü, Bikini Bottom’ın yıllardır bize gösterildiği kadar neşeli bir yer olmadığı, tıpkı gerçek dünya gibi monotonlukla ve mutsuz insanlarla dolu olduğu fikrinden doğan distopik bir çalışma. Eser, Eleanor Rigby ve İstasyon İnsanları şarkılarındaki modern toplum ve yalnızlık anlatılarından ilham alıyor. Arka plandaki fabrika dumanları ve işe giden Ruhi, modern hayatın tekdüzeliğini temsil ederken; kompozisyonun farklı noktalarına bu dünyanın da giderek “dibe vurduğunu” ima eden kelime oyunları ve görsel detaylar yerleştirdim.", "src": "work-2.jpg", "e": "Vicious Circle is a dystopian piece born from the idea that Bikini Bottom isn’t as cheerful as it has long been shown to us, but, just like the real world, is full of monotony and unhappy people. It draws inspiration from the themes of modern society and loneliness in the songs Eleanor Rigby and İstasyon İnsanları. The factory smoke in the background and Ruhi heading to work stand for the monotony of modern life, while wordplay and visual details placed around the composition hint that this world too is gradually hitting rock bottom.", "tt": "KISIR DÖNGÜ"}, {"t": "PHANTOM OF THE DISCOTHEQUE", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Phantom of the Discotheque, Türk indie grubu Soft Analog’un Dans İllüzyon ve Gecenin Koynunda albümlerinin görsel dünyalarını bir araya getiriyor. Dans İllüzyon albüm kapağında yer alan karakterlerden ilham alan eser, onları dans etmenin katlanılmaz bir gerçeklikte hayatta kalma biçimine dönüştüğü post-apokaliptik bir dünyada yeniden yorumluyor. İllüstrasyon, bu sonsuz dansı bir olumlama metaforu olarak kullanıyor: Çevremizdeki dünya bize bunun için her türlü nedeni sunmasına rağmen neşeli, iyimser ve eğlenceye odaklı kalma baskısı. Gecenin Koynunda albümünün daha karanlık atmosferinden beslenen eser, dansın artık yalnızca bir mutluluk ifadesi olmaktan çıktığı; dış dünyanın dehşetini kendinden uzak tutabilmek için gösterilen çaresiz bir çabaya dönüştüğü bir gerçeklik hayal ediyor.", "src": "work-11.jpg", "e": "Phantom of the Discotheque brings together the visual worlds of Turkish indie band Soft Analog’s Dans İllüzyon and Gecenin Koynunda albums. Inspired by the characters featured on the cover of Dans İllüzyon, the work reimagines them in a post-apocalyptic world where dancing has become a way of surviving an unbearable reality. The illustration uses this endless dance as a metaphor for forced positivity: the pressure to remain cheerful, optimistic and entertained even when the world around us gives us every reason not to be. Drawing on the darker atmosphere of Gecenin Koynunda, the work imagines a reality where dancing is no longer simply an expression of joy, but a desperate attempt to keep the horrors of the outside world at a distance.", "tt": "PHANTOM OF THE DISCOTHEQUE"}, {"t": "THE BEHEMOTH THAT LULLS THE NIGHT TO SLEEP", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Geceyi Uyutan Behemoth, Bulgakov’un Usta ile Margarita eserindeki şeytani kedi Behemoth’u alternatif bir Türkiye gerçekliğinde yeniden hayal ettiğim bir çalışma. İnsanları manipüle ederek kaos yaratan ve yalnızca onların içinde zaten var olanı açığa çıkardığını savunan Behemoth, bu kez kendi şeytani doğasını bile tersine çevirecek kadar bunaltıcı bir gerçeklikle karşı karşıya. Eser, kötülük ve kaosla özdeşleşmiş bir karakterin bile içinde bulunduğu dünyanın ağırlığı karşısında tükenebileceği fikrini kara mizahla ele alıyor.", "src": "work-3.jpg", "e": "The Behemoth That Lulls the Night to Sleep reimagines Behemoth, the demonic cat of Bulgakov’s The Master and Margarita, in an alternative Turkish reality. Behemoth, who manipulates people into creating chaos and insists he only reveals what already exists within them, now faces a reality so overwhelming it turns even his own demonic nature upside down. With dark humor, the work explores the idea that even a character associated with evil and chaos can be worn out by the weight of the world he lives in.", "shop": "https://sadeceartstore.etsy.com/listing/4583071772", "tt": "GECEYİ UYUTAN BEHEMOTH"}, {"t": "OUT OF SYNC", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Out of Sync, Yin-Yang düşüncesini zaman ve mekân kavramlarıyla bir araya getiren bir çalışma. Loki’deki zaman atlamalarından yola çıkarak, zamanın ve mekânın hayatımızı tanımlayan mutlak gerçeklikler olarak değil de aslında basit birer değişken olarak da düşünülebileceği ve bu nedenle bazen onlara yüklediğimiz anlamı gözümüzde fazla büyütmememiz gerektiği fikrine odaklanıyor. Ana karakter, Loki’deki Ms. Minutes’tan ilham alıyor ve “rubber hose” estetiğinde şekilleniyor. “Not the Same Anymore” ise The Strokes’un sevdiğim parçalarından biri; zamanla tüm yaşanmışlıkların geride kaldığını fark etmenin insanda yarattığı değişimi temsil ediyor. Bu farkındalık, geçmişin ağırlığını azaltırken insanı hayata karşı daha hissiz ve artık eskisiyle tamamen aynı olamayacağı bir noktaya taşıyor.", "src": "work-4.jpg?v=2", "e": "Out of Sync brings the Yin-Yang idea together with the concepts of time and space. Drawing on the time jumps in Loki, it focuses on the idea that time and space may not be absolute realities that define our lives but simply variables, so we shouldn’t overstate the importance we attach to them. The main character, inspired by Ms. Minutes from Loki, is drawn in the “rubber hose” style. “Not the Same Anymore,” one of my favorite songs by The Strokes, represents the change that comes from realizing that everything we’ve lived has been left behind with time. This realization lightens the weight of the past while carrying a person to a point where they feel more numb toward life and can never be entirely the same as before."}, {"t": "SIHHİYE-NOIR", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "d": "Sıhhiye-Noir, film noir estetiğini Ankara’nın kendine özgü gri atmosferiyle bir araya getirdiğim bir çalışma. Ankara’nın Sıhhiye semtinde bir kış günü Ted ve Spider-Man Noir, bir gizemi aydınlatmak için aynı dünyada buluşuyor. Eseri çizdiğim dönemde Ted dizisine duyduğum hayranlık, karakteri kendi kurduğum bu dünyaya dahil etmemde etkili oldu. Eser, Ankara’yı ve sevdiğim popüler kültür karakterlerini klasik noir anlatılarının karanlık ve gizemli atmosferi içinde hayal ediyor.", "src": "work-5.jpg", "e": "Sıhhiye-Noir blends the film noir aesthetic with Ankara’s distinctive gray atmosphere. On a winter day in Ankara’s Sıhhiye district, Ted and Spider-Man Noir meet in the same world to solve a mystery. My admiration for the Ted series while I was drawing this piece influenced my decision to bring the character into the world I built. The work imagines Ankara and my favorite pop culture characters within the dark, mysterious atmosphere of classic noir stories."}, {"t": "OLD THOR WITH DADDY ISSUES", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "e": "Old Thor With Daddy Issues is a humorous work in which I approach the divine characters of Norse mythology through an ordinary, human father-son relationship. I imagined an aged Thor as a son who, after all this time, can still argue with his father Odin over small matters. By placing the grand, serious atmosphere of the mythological world alongside an everyday family conflict, I built a narrative based on this contrast that makes even the gods thoroughly human.", "d": "Old Thor With Daddy Issues, İskandinav mitolojisinin tanrısal karakterlerini sıradan ve insani bir baba-oğul ilişkisi üzerinden ele aldığım mizahi bir çalışma. Yaşlanmış Thor’u, aradan geçen onca zamana rağmen babası Odin’le hâlâ küçük meseleler üzerinden tartışabilen bir oğul olarak hayal ettim. Mitolojik dünyanın görkemli ve ciddi atmosferini gündelik bir aile çatışmasıyla yan yana getirerek, tanrıları bile son derece insani hale getiren bu tezat üzerine kurulu bir anlatı oluşturdum.", "src": "work-6.jpg", "shop": "https://sadeceartstore.etsy.com/listing/4582731915"}, {"t": "AQUARIUM ON FIRE", "tt": "YANGIN AKVARYUM", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "e": "Aquarium on Fire takes its starting point from Büyük Ev Ablukada’s song “Yangın Akvaryum” and explores the relationship people have with their own fears and problems. Inspired by the world of Büyük Ev Ablukada, the work tells an absurd story about the contradiction of being unable to leave one’s comfort zone, afraid of taking risks and of taking the first step toward change, even when the possibility of a solution is right in front of us. The character’s impasse is built on the idea that a familiar anxiety can sometimes feel safer than an uncertain solution.", "d": "Yangın Akvaryum, Büyük Ev Ablukada’nın aynı adlı şarkısından yola çıkarak, insanın kendi korkuları ve sorunlarıyla kurduğu ilişkiyi ele alan bir çalışma. Eser, çözüm ihtimali hemen önümüzde olsa bile konfor alanından çıkamamanın, risk almaktan ve değişime doğru ilk adımı atmaktan korkmanın yarattığı çelişkiyi Büyük Ev Ablukada’nın dünyasından ilham alan absürt bir anlatımla ele alıyor. Karakterin içinde bulunduğu çıkmaz; bazen tanıdık bir kaygının, belirsiz bir çözümden daha güvenli gelebileceği fikrine dayanıyor.", "src": "work-7.jpg"}, {"t": "IMAGINE", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "e": "Imagine takes John Lennon’s song of the same name as its starting point and explores the idea of a world without borders. The work interprets the utopia of peace and unity that Lennon built through a colorful, surreal style drawing on the counterculture and psychedelic aesthetics of the 1960s. At the center of the composition, Lennon is left almost colorless, while the fantastical world expanding around him and his piano is built on the idea that imagination can surpass the limits of present reality and make visible the thought that another world may be possible.", "d": "Imagine, John Lennon’ın aynı adlı şarkısından yola çıkarak, sınırların olmadığı bir dünya fikrini ele alan bir çalışma. Eser, Lennon’ın barış ve birlik üzerine kurduğu ütopyayı, 1960’ların karşı kültürü ve psikedelik estetiğinden beslenen renkli ve gerçeküstü bir anlatımla yorumluyor. Kompozisyonun merkezinde neredeyse renksiz bırakılan Lennon ve piyanosunun çevresinde giderek genişleyen fantastik dünya; hayal gücünün mevcut gerçekliğin sınırlarını aşarak başka bir dünyanın mümkün olabileceğine dair düşünceyi görünür kılabileceği fikrine dayanıyor.", "src": "work-8.jpg"}, {"t": "RUN IF YOU CAN", "tt": "KAÇ KAÇABİLİRSEN", "y": "2025", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "e": "Run If You Can is a work born from the feelings Soft Analog’s song “Kaç” stirred in me, and it explores modern people’s relationship with social media and their surroundings. Through the idea of “run if you can,” the work interprets the pressure on the individual created by lynch-mob culture and herd psychology, as thoughts and discourse grow more and more alike. At its core is the idea that it is becoming harder to step away from the voice of the majority and to protect one’s own thinking outside of it.", "d": "Kaç Kaçabilirsen, Soft Analog’un “Kaç” şarkısının bende uyandırdığı hislerden yola çıkarak, modern insanın sosyal medya ve çevresiyle kurduğu ilişkiyi ele alan bir çalışma. Eser, linç kültürü ve sürü psikolojisiyle giderek birbirine benzeyen düşünce ve söylemlerin birey üzerinde yarattığı baskıyı “kaç kaçabilirsen” fikri üzerinden yorumluyor. Çalışmanın temelinde, çoğunluğun sesinden uzaklaşmanın ve bu sesin dışında kişinin kendi düşüncesini korumanın giderek zorlaştığı fikri yer alıyor.", "src": "work-9.jpg"}, {"t": "KUMSDAY", "y": "2026", "m": "Acrylic markers and fineliners on paper", "z": "Approx. 25 × 35 cm", "e": "Kumsday is a work inspired by the song “Yol” from Kum’s album of the same name. I reimagined the sense of journey the song stirred in me within a post-apocalyptic universe drawing on desert dystopias like Mad Max and Dune and the science-fiction worlds of Mœbius.", "d": "Kumsday, Kum’un aynı adlı albümünde yer alan “Yol” şarkısından yola çıkarak oluşturduğum bir çalışma. Şarkının bende uyandırdığı yolculuk hissini, Mad Max ve Dune gibi çöl distopyalarından ve Mœbius’un bilimkurgu dünyalarından beslenen post-apokaliptik bir evrenin içinde yeniden hayal ettim.", "src": "work-10.jpg"}];
@@ -165,8 +214,136 @@ T.en.fnote="Send opens your email app. If nothing happens, write to";T.tr.fnote=
 T.en.etsy="Sadeceart Store on ETSY";T.tr.etsy="Sadeceart Store ETSY’de";
 T.en.studioCap="Crime scene";T.tr.studioCap="Suç mahalli";
 Object.assign(T.en,{"q1": "Are the original drawings for sale?", "a1": "Some of them are. If you're interested in an original, write to me through the contact form and I'll let you know which pieces are available and their prices.", "q2": "Do you ship the original drawings?", "a2": "Currently I ship original drawings within Turkey only.", "q3": "Where can I get prints?", "a3": "Selected works are available as digital prints in my Etsy shop, Sadeceart Store. They are instant downloads that you can print yourself, for personal use only. No physical item is shipped.", "q4": "Do you take commissions?", "a4": "In limited numbers, yes. Send a short message describing your idea and I'll let you know whether I can take it on.", "q5": "Can I share your drawings?", "a5": "You can share them with credit; please tag @sadeceart_. For commercial use, please write to me first.", "q6": "How can I reach you?", "a6": "Use the contact form, or send a message on Instagram @sadeceart_."});Object.assign(T.tr,{"q1": "Orijinal çizimler satılık mı?", "a1": "Bazıları satılık. Bir orijinal ilgini çektiyse iletişim formundan yaz, hangi çizimlerin müsait olduğunu ve fiyatını paylaşayım.", "q2": "Orijinal çizimleri gönderiyor musun?", "a2": "Şu an orijinal çizimleri sadece Türkiye içine gönderiyorum.", "q3": "Baskıları nereden alabilirim?", "a3": "Seçili çalışmalar Etsy mağazamda (Sadeceart Store) dijital baskı olarak satılıyor. Anında indirilen dosyalardır, kendin bastırabilirsin, yalnızca kişisel kullanım içindir. Fiziksel ürün gönderilmez.", "q4": "Özel çizim (komisyon) alıyor musun?", "a4": "Sınırlı sayıda alıyorum. Fikrini kısaca anlatan bir mesaj gönder, yapıp yapamayacağımı yazayım.", "q5": "Çizimleri paylaşabilir miyim?", "a5": "Kaynak göstererek paylaşabilirsin; lütfen @sadeceart_ hesabını etiketle. Ticari kullanım için önce yazman gerekir.", "q6": "Nasıl ulaşabilirim?", "a6": "İletişim formunu kullanabilir ya da Instagram'dan @sadeceart_ hesabına yazabilirsin."});
+T.en.fmHero="for sadeceart.fm →";T.tr.fmHero="sadeceart.fm için buradan →";
 T.en.hint="Hover or drag over the drawing to magnify";T.tr.hint="Çizimin üzerinde gezdir, büyütülmüş halini gör";
 setLang("en");
+</script>
+<script>
+/* sadeceart FM — YouTube çalma listesi radyosu. Sayfalar arası geçişte müzik kesilmez (site tek sayfa). */
+(function(){
+const PLAYLIST_ID='PLfSwrQNN4eak';
+const API_KEY=''; // isteğe bağlı: albüm adı için YouTube Data API v3 anahtarı (sadece sadeceart.com'a kısıtla)
+const g=id=>document.getElementById(id);
+const panel=g('fmPanel'),btn=g('fmBtn');
+const S={
+  en:{off:'Off air',on:'On air',paused:'Paused',tune:'Open FM and press play to tune in',load:'Loading…',ready:'Ready. Press play.',fail:'YouTube couldn’t load. Check your connection or ad blocker.',skip:'Skipping a track that can’t be embedded…'},
+  tr:{off:'Yayın dışı',on:'Yayında',paused:'Duraklatıldı',tune:'Dinlemek için play’e bas',load:'Yükleniyor…',ready:'Hazır. Play’e bas.',fail:'YouTube yüklenemedi. Bağlantını ya da reklam engelleyiciyi kontrol et.',skip:'Gömülemeyen bir şarkı atlanıyor…'}
+};
+const s=k=>S[document.documentElement.lang==='tr'?'tr':'en'][k];
+let player=null,ready=false,loading=false,tick=null,lastId=null,st='off';
+
+function refresh(){
+  g('fmLive').textContent=s(st);
+  if(!lastId)g('fmSong').textContent=s('tune');
+}
+new MutationObserver(refresh).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+refresh();
+
+function openP(){panel.hidden=false;btn.setAttribute('aria-expanded','true');loadApi()}
+function closeP(){panel.hidden=true;btn.setAttribute('aria-expanded','false')}
+btn.addEventListener('click',e=>{e.stopPropagation();panel.hidden?openP():closeP()});
+g('fmHero').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();openP()});
+document.addEventListener('click',e=>{if(!panel.hidden&&!panel.contains(e.target)&&!btn.contains(e.target))closeP()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!panel.hidden)closeP()});
+
+// YouTube API sadece FM ilk açıldığında yüklenir (siteyi yavaşlatmaz)
+function loadApi(){
+  if(loading)return;loading=true;
+  g('fmNote').textContent=s('load');
+  window.onYouTubeIframeAPIReady=init;
+  const t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';t.onerror=fail;document.head.appendChild(t);
+  setTimeout(()=>{if(!ready)fail()},8000);
+}
+function fail(){if(!ready)g('fmNote').textContent=s('fail')}
+function init(){
+  player=new YT.Player('fmYt',{
+    height:'1',width:'1',
+    playerVars:{listType:'playlist',list:PLAYLIST_ID,playsinline:1},
+    events:{
+      onReady:()=>{
+        ready=true;player.setShuffle(true);player.setLoop(true);
+        ['fmPrev','fmPlay','fmNext'].forEach(id=>g(id).disabled=false);
+        g('fmNote').textContent=s('ready');
+      },
+      onStateChange:onState,
+      onError:()=>{g('fmNote').textContent=s('skip');player.nextVideo()}
+    }
+  });
+}
+function onState(e){
+  const playing=e.data===YT.PlayerState.PLAYING;
+  panel.classList.toggle('fm-playing',playing);
+  document.body.classList.toggle('fm-on',playing);
+  if(playing){st='on';g('fmNote').textContent=''}
+  else if(e.data===YT.PlayerState.PAUSED)st='paused';
+  refresh();
+  if(e.data===YT.PlayerState.PLAYING||e.data===YT.PlayerState.BUFFERING)updateMeta();
+  clearInterval(tick);
+  if(playing)tick=setInterval(updateProgress,500);
+  if('mediaSession' in navigator)navigator.mediaSession.playbackState=playing?'playing':'paused';
+}
+
+function clean(x){return x.replace(/\s*[\(\[](official|lyric|lyrics|audio|video|music video|hd|hq|remastered)[^\)\]]*[\)\]]/ig,'').trim()}
+function updateMeta(){
+  const d=player.getVideoData();
+  if(!d||!d.video_id||d.video_id===lastId)return;
+  lastId=d.video_id;
+  let song=clean(d.title||'');
+  const topicRe=/\s*-\s*(Topic|Konu)$/i;
+  let artist=(d.author||'').replace(topicRe,'');
+  if(!topicRe.test(d.author||'')&&song.includes(' - ')){const [a,...r]=song.split(' - ');artist=a.trim();song=r.join(' - ').trim()}
+  g('fmSong').textContent=song;g('fmArtist').textContent=artist;g('fmAlbum').textContent='';
+  setCover(d.video_id);
+  if(API_KEY)fetchAlbum(d.video_id);
+  if('mediaSession' in navigator){
+    navigator.mediaSession.metadata=new MediaMetadata({title:song,artist,album:'sadeceart FM',artwork:[{src:`https://i.ytimg.com/vi/${d.video_id}/maxresdefault.jpg`,sizes:'1280x720',type:'image/jpeg'}]});
+  }
+}
+// Kapak: 16:9 maxres (albüm ortada kare, kare kırpma kenarları atar); yoksa 4:3 hq + yakınlaştırma
+function setCover(id){
+  const img=g('fmCover');let step=0;
+  const urls=[`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`,`https://i.ytimg.com/vi/${id}/hqdefault.jpg`];
+  const fb=()=>{step=1;img.classList.add('zoom');img.src=urls[1]};
+  img.classList.remove('on','zoom');
+  img.onload=()=>{if(step===0&&img.naturalWidth<300)return fb();img.classList.add('on')};
+  img.onerror=()=>{if(step===0)fb()};
+  img.src=urls[0];
+}
+async function fetchAlbum(id){
+  try{
+    const r=await fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${id}&key=${API_KEY}`);
+    const j=await r.json();
+    const desc=(j.items&&j.items[0]&&j.items[0].snippet.description)||'';
+    if(!desc.startsWith('Provided to YouTube'))return;
+    const p=desc.split(/\n\s*\n/);
+    if(p[2]&&id===lastId)g('fmAlbum').textContent=p[2].trim();
+  }catch(_){}
+}
+
+const fmt=x=>{x=Math.max(0,Math.floor(x||0));return Math.floor(x/60)+':'+String(x%60).padStart(2,'0')};
+function updateProgress(){
+  const c=player.getCurrentTime(),t=player.getDuration();
+  g('fmCur').textContent=fmt(c);g('fmDur').textContent=fmt(t);
+  g('fmProg').style.width=t?(c/t*100)+'%':'0%';
+}
+g('fmBar').addEventListener('click',e=>{
+  if(!ready)return;
+  const r=g('fmBar').getBoundingClientRect();
+  player.seekTo(player.getDuration()*((e.clientX-r.left)/r.width),true);updateProgress();
+});
+function toggle(){if(!ready)return;player.getPlayerState()===YT.PlayerState.PLAYING?player.pauseVideo():player.playVideo()}
+function prev(){if(!ready)return;player.getCurrentTime()>3?player.seekTo(0,true):player.previousVideo()}
+function next(){if(ready)player.nextVideo()}
+g('fmPlay').addEventListener('click',toggle);
+g('fmPrev').addEventListener('click',prev);
+g('fmNext').addEventListener('click',next);
+if('mediaSession' in navigator){
+  navigator.mediaSession.setActionHandler('play',toggle);
+  navigator.mediaSession.setActionHandler('pause',toggle);
+  navigator.mediaSession.setActionHandler('previoustrack',prev);
+  navigator.mediaSession.setActionHandler('nexttrack',next);
+}
+})();
 </script>
 </body>
 </html>
